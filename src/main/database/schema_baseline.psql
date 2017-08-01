@@ -1,0 +1,33 @@
+
+DROP TABLE IF EXISTS country_table;
+CREATE TABLE IF NOT EXISTS country_table
+(
+  id serial,
+  time_val bigint NOT NULL,
+  country text NOT NULL,
+  count_val integer,
+  value_val real,
+  PRIMARY KEY (time_val, country)
+);
+
+DROP TABLE IF EXISTS item_table;
+CREATE TABLE IF NOT EXISTS item_table
+(
+  id serial ,
+  time_val bigint NOT NULL ,
+  item_id integer NOT NULL ,
+  count_val integer,
+  value_val real,
+  PRIMARY KEY (time_val, item_id)
+);
+
+DROP TABLE IF EXISTS device_table;
+CREATE TABLE IF NOT EXISTS device_table
+(
+  id serial ,
+  time_val bigint NOT NULL,
+  device text NOT NULL,
+  count_val integer,
+  value_val real,
+  PRIMARY KEY (time_val, device)
+);

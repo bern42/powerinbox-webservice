@@ -1,0 +1,24 @@
+# Gradle #
+###################
+classes/
+build/
+#cache/
+.gradle/
+.cache
+
+# Eclipse #
+###################
+.settings/
+.project
+.classpath
+
+# IntelliJ #
+###################
+.idea/
+*.iml
+*.iws
+*.eml
+
+# Mac #
+###################
+.DS_Store

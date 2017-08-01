@@ -1,0 +1,90 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.4.RELEASE'
+        classpath "io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'org.springframework.boot'
+apply plugin: "io.spring.dependency-management"
+
+group = 'com.powerinbox.bern'
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/release"}
+}
+
+ext {
+	springVersion = '4.3.6.RELEASE'
+	springBootVersion = '1.4.4.RELEASE'
+	//logging
+	slf4jVersion = '1.7.21'
+    // Jackson
+    jacksonVersion = '2.8.3'
+    commonsLangVersion = '3.3.1'
+	//PostgreSQL Driver Version
+	postgreSQLDriverVersion = '9.4-1201-jdbc41'
+	jmockitVersion = '1.27'
+    javaxValidationVersion = '1.1.0.Final'
+   // Junit
+    junitVersion = '4.12'
+    //lombok
+    lombokVersion = '1.16.10'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+    }
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+	//logging
+	compile("org.slf4j:slf4j-api:${slf4jVersion}")
+	compile("javax.validation:validation-api:${javaxValidationVersion}")
+    // Spring jdbc
+    compile("org.springframework:spring-jdbc:${springVersion}")
+    // Spring jdbc
+    compile("org.springframework:spring-orm:${springVersion}")
+    // Spring data-jpa
+    compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
+    // Apache
+    compile("org.apache.commons:commons-lang3:${commonsLangVersion}")
+
+    // Jackson
+    compile("com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}")
+    //postgresql java driver
+    runtime("org.postgresql:postgresql:${postgreSQLDriverVersion}")
+
+    // lombok
+    compile("org.projectlombok:lombok:${lombokVersion}")
+
+	// testing
+    testCompile("org.jmockit:jmockit:${jmockitVersion}")
+    testCompile("junit:junit:${junitVersion}")
+   
+    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    testCompile("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
+}
+
+processResources {
+        filesMatching("**/bootstrap.yml") {
+            expand(project.properties)
+        }
+        filesMatching("**/application.yml") {
+            expand(project.properties)
+        }
+    }
+
+task wrapper(type: Wrapper) {
+
+}

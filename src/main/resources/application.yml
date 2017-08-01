@@ -1,0 +1,12 @@
+server:
+  contextPath: /powerinbox-webservice
+  port: 8080
+management:
+  contextPath: /actuator
+pg:
+  username: app_user
+  password: changeMe
+  driverClassName: org.postgresql.Driver
+  postgresHost: localhost
+  postgresPort: 5432
+  databaseName: powerinbox_demo

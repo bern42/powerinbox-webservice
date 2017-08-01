@@ -1,0 +1,8 @@
+com.powerinbox.bern.webservice
+com.powerinbox.bern.webservice.config
+com.powerinbox.bern.webservice.controller
+com.powerinbox.bern.webservice.dao
+com.powerinbox.bern.webservice.model
+com.powerinbox.bern.webservice.service
+com.powerinbox.webservice.dao
+com.powerinbox.webservice.service
